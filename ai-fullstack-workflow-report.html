@@ -159,14 +159,13 @@
     .solution .eyebrow, .handoff .eyebrow, .practice-section .eyebrow, .closing .eyebrow { color: #6c5aa6; }
     .solution .lead, .handoff .lead, .practice-section .lead { color: #647087; }
     .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .view { padding: 29px; border: 1px solid transparent; border-radius: var(--radius); background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(125deg, #a5d8ff, #d9b9ff, #ffd3bd, #f3df93, #a9e5d3) border-box; box-shadow: 0 12px 28px rgb(74 91 139 / .09); }
+    .view { padding: 24px; border: 1px solid transparent; border-radius: var(--radius); background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(125deg, #a5d8ff, #d9b9ff, #ffd3bd, #f3df93, #a9e5d3) border-box; box-shadow: 0 12px 28px rgb(74 91 139 / .09); }
     .view:nth-child(2) { background: linear-gradient(#fbfdff, #fbfdff) padding-box, linear-gradient(125deg, #9fd9ff, #c4bcff, #f5bdff, #ffd0b2) border-box; }
     .view:nth-child(3) { background: linear-gradient(#fffdfb, #fffdfb) padding-box, linear-gradient(125deg, #ffd0b1, #f5c1dc, #d5beff, #a7d8ff) border-box; }
     .view:nth-child(4) { background: linear-gradient(#fbfffd, #fbfffd) padding-box, linear-gradient(125deg, #a6e6d7, #a7d9ff, #d8c1ff, #ffd4ac) border-box; }
     .view-head { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
     .view-no { color: #6b5ba7; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; }
     .view h3 { margin: 0; font-size: 25px; }
-    .view-question { margin: 0 0 19px; color: #647087; font-size: 15px; }
     .field { padding: 15px 0; border-top: 1px solid #e8eaf4; }
     .field:last-child { padding-bottom: 0; }
     .field-label { display: block; margin-bottom: 7px; color: #6b5ba7; font-size: 11px; font-weight: 800; letter-spacing: .06em; }
@@ -361,35 +360,27 @@
         <div class="views">
           <article class="view reveal">
             <div class="view-head"><span class="view-no">VIEW 01</span><h3>需求视图</h3></div>
-            <p class="view-question">回答：为什么做、做什么、什么算完成？</p>
-            <div class="field"><span class="field-label">交付物</span><p>目标与边界、P0/P1 优先级、不做项、业务规则、数据边界、可观察的验收条件。</p></div>
-            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>运营与产品</b>据此补充内容、规则、外部配置；<b>测试</b>据此写出通过或失败条件。</p></div>
-            <div class="field"><span class="field-label">AI 如何切换</span><p>新工具只需读取已确认的目标、规则和限制，即可继续拆解或实现，不必追溯完整对话。</p></div>
-            <div class="field"><span class="field-label">避免的风险</span><p>将口头需求误当作实现细节，或在开发中无声地扩大范围。</p></div>
+            <div class="field"><span class="field-label">承载交付物</span><p>目标边界、业务规则、数据边界与验收条件。</p></div>
+            <div class="field"><span class="field-label">解决问题</span><p>让口头需求变为可确认、可追溯的项目约束。</p></div>
+            <div class="field"><span class="field-label">衔接流程</span><p>运营 / 产品输入，测试验收，AI 任务拆解。</p></div>
           </article>
           <article class="view reveal">
             <div class="view-head"><span class="view-no">VIEW 02</span><h3>流程原型视图</h3></div>
-            <p class="view-question">回答：用户怎么走，系统怎么反馈和变化？</p>
-            <div class="field"><span class="field-label">交付物</span><p>主路径、页面与状态清单、稳定状态 ID、操作到反馈到数据变化表、空态、错误、权限与恢复路径。</p></div>
-            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>产品</b>确认流程闭环；<b>设计</b>据此安排关键画面和反馈；<b>测试</b>据此覆盖关键状态。</p></div>
-            <div class="field"><span class="field-label">AI 如何切换</span><p>明确的状态与转移可让新工具继续推理，避免只完成“看起来能演示”的主流程。</p></div>
-            <div class="field"><span class="field-label">避免的风险</span><p>遗漏失败、空态、取消、恢复等真正影响交付质量的场景。</p></div>
+            <div class="field"><span class="field-label">承载交付物</span><p>主路径、状态清单、操作反馈与异常处理。</p></div>
+            <div class="field"><span class="field-label">解决问题</span><p>让流程不只停留在主路径，关键状态可被完整确认。</p></div>
+            <div class="field"><span class="field-label">衔接流程</span><p>产品确认，设计编排，测试覆盖，AI 连续推理。</p></div>
           </article>
           <article class="view reveal">
             <div class="view-head"><span class="view-no">VIEW 03</span><h3>视觉视图</h3></div>
-            <p class="view-question">回答：每个确认状态应该如何被看见和理解？</p>
-            <div class="field"><span class="field-label">交付物</span><p>关键状态帧、组件与变体、资产清单和导出规则、设计令牌、静态与动态边界、响应式规则。</p></div>
-            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>设计师</b>可直接制作或修订视觉；<b>前端</b>可据此实现布局、资源与动态元素。</p></div>
-            <div class="field"><span class="field-label">AI 如何切换</span><p>AI 只修改指定状态并遵守明确约束，避免因为模糊指令而扩散修改到其他页面。</p></div>
-            <div class="field"><span class="field-label">避免的风险</span><p>把会变化的数据做死在背景图中，或让设计稿与实际状态表达不同含义。</p></div>
+            <div class="field"><span class="field-label">承载交付物</span><p>关键状态帧、组件规则、资产边界与响应式规范。</p></div>
+            <div class="field"><span class="field-label">解决问题</span><p>让视觉表现与状态含义保持一致，避免动态信息被写死。</p></div>
+            <div class="field"><span class="field-label">衔接流程</span><p>设计制作，前端实现，AI 定向修改与视觉验收。</p></div>
           </article>
           <article class="view reveal">
             <div class="view-head"><span class="view-no">VIEW 04</span><h3>运行视图</h3></div>
-            <p class="view-question">回答：真实页面如何执行、验证、上线和回溯？</p>
-            <div class="field"><span class="field-label">交付物</span><p>可运行页面、数据/API 契约、状态直达预览路径、测试或人工验证证据、构建记录、发布版本与已知限制。</p></div>
-            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>前后端、测试与发布人员</b>可独立复现、联调、验收与追溯，无需依赖页面截图。</p></div>
-            <div class="field"><span class="field-label">AI 如何切换</span><p>新工具从可运行状态、接口边界和验证入口继续修复或扩展，成果可被立即检查。</p></div>
-            <div class="field"><span class="field-label">避免的风险</span><p>状态无法复现、数据归属不清、发布版本无法对应和交付只剩静态展示。</p></div>
+            <div class="field"><span class="field-label">承载交付物</span><p>可运行页面、API 契约、预览路径、验证与发布记录。</p></div>
+            <div class="field"><span class="field-label">解决问题</span><p>让状态、数据与版本可复现，不再以截图作为交付终点。</p></div>
+            <div class="field"><span class="field-label">衔接流程</span><p>前后端联调，QA 验收，发布回溯，AI 修复与扩展。</p></div>
           </article>
         </div>
         </div>
