@@ -151,38 +151,43 @@
 
     .views-intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; align-items: end; margin-bottom: 44px; }
     .views-intro .lead { margin: 0; }
+    .solution { background: #073e36; color: white; }
+    .solution .eyebrow, .handoff .eyebrow, .practice-section .eyebrow { color: #a5e3d2; }
+    .solution .lead, .handoff .lead, .practice-section .lead { color: #c5dcd5; }
     .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .view { padding: 29px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
-    .view:nth-child(2) { background: #f3faf7; }
-    .view:nth-child(3) { background: #fbf8f1; border-color: var(--warm-line); }
-    .view:nth-child(4) { background: #edf6f3; }
+    .view { padding: 29px; border: 1px solid rgb(168 226 211 / .38); border-radius: var(--radius); background: #14574d; }
+    .view:nth-child(2) { background: #124f69; border-color: rgb(146 206 231 / .4); }
+    .view:nth-child(3) { background: #6b4038; border-color: rgb(238 180 160 / .42); }
+    .view:nth-child(4) { background: #45622f; border-color: rgb(203 225 159 / .4); }
     .view-head { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
-    .view-no { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; }
+    .view-no { color: #bcefe1; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; }
     .view h3 { margin: 0; font-size: 25px; }
-    .view-question { margin: 0 0 19px; color: var(--ink-soft); font-size: 15px; }
-    .field { padding: 15px 0; border-top: 1px solid rgb(16 34 32 / .11); }
+    .view-question { margin: 0 0 19px; color: #d8e9e4; font-size: 15px; }
+    .field { padding: 15px 0; border-top: 1px solid rgb(255 255 255 / .2); }
     .field:last-child { padding-bottom: 0; }
-    .field-label { display: block; margin-bottom: 7px; color: var(--accent-deep); font-size: 11px; font-weight: 800; letter-spacing: .06em; }
-    .field p { margin: 0; font-size: 14px; }
+    .field-label { display: block; margin-bottom: 7px; color: #c0f0e1; font-size: 11px; font-weight: 800; letter-spacing: .06em; }
+    .field p { margin: 0; color: #f4faf8; font-size: 14px; }
     .field b { font-weight: 800; }
 
-    .handoff { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .handoff { background: #123b34; color: white; border-top: 1px solid rgb(172 228 214 / .28); }
     .handoff-top { display: grid; grid-template-columns: .83fr 1.17fr; gap: 54px; align-items: end; margin-bottom: 36px; }
     .handoff-top .lead { margin: 0; }
-    .handoff-list { border-top: 1px solid var(--line); }
-    .handoff-row { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 25px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-    .handoff-role { color: var(--accent-deep); font-size: 15px; font-weight: 800; }
-    .handoff-row p { margin: 0; color: var(--ink-soft); font-size: 14px; }
-    .handoff-row p b { display: block; margin-bottom: 3px; color: var(--ink); }
+    .handoff-list { border-top: 1px solid rgb(255 255 255 / .22); }
+    .handoff-row { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 25px; padding: 22px 0; border-bottom: 1px solid rgb(255 255 255 / .18); }
+    .handoff-role { color: #a9e5d4; font-size: 15px; font-weight: 800; }
+    .handoff-row p { margin: 0; color: #d1e1dc; font-size: 14px; }
+    .handoff-row p b { display: block; margin-bottom: 3px; color: white; }
 
+    .practice-section { background: #213849; color: white; }
+    .practice-section .evidence-quote { color: #d7e4eb; border-left-color: #e6b56b; }
     .evidence-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(38px, 8vw, 110px); align-items: start; }
     .evidence-quote { padding: 24px 0 0 26px; border-left: 3px solid var(--accent); color: var(--ink-soft); font-size: 18px; line-height: 1.7; }
     .practice-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; }
-    .practice { padding: 22px 0; border-top: 1px solid var(--line); }
+    .practice { padding: 22px 0; border-top: 1px solid rgb(255 255 255 / .2); }
     .practice b { display: block; margin-bottom: 5px; font-size: 16px; }
-    .practice p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    .practice p { margin: 0; color: #d1e1e7; font-size: 14px; }
 
-    .closing { padding: 82px 0; background: var(--accent-deep); color: white; }
+    .closing { padding: 82px 0; background: #6b4038; color: white; }
     .closing-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: end; }
     .closing .eyebrow { color: #b7e8d9; }
     .closing h2 { max-width: 720px; margin-bottom: 0; font-size: clamp(32px, 4vw, 54px); }
@@ -346,7 +351,8 @@
         </div>
       </section>
 
-      <section class="section container" id="views">
+      <section class="solution section" id="views">
+        <div class="container">
         <div class="views-intro reveal">
           <div><p class="eyebrow">解决方案</p><h2>四个视图，分别为不同协作关系提供可用产出。</h2></div>
           <p class="lead">它们不是四份为了齐全而创建的文档，更不是自动同步的“唯一真相”。每个视图按关注点拥有事实，再通过状态、映射与验收暴露不一致。</p>
@@ -385,6 +391,7 @@
             <div class="field"><span class="field-label">避免的风险</span><p>状态无法复现、数据归属不清、发布版本无法对应和交付只剩静态展示。</p></div>
           </article>
         </div>
+        </div>
       </section>
 
       <section class="handoff section" id="handoff">
@@ -399,8 +406,8 @@
         </div>
       </section>
 
-      <section class="section container" id="practice">
-        <div class="evidence-grid">
+      <section class="practice-section section" id="practice">
+        <div class="container"><div class="evidence-grid">
           <div class="reveal"><p class="eyebrow">已有实践</p><h2>工作流不是额外的仪式，而是把高风险的信息显式化。</h2><p class="evidence-quote">在活动 H5 的既有规范中，我们已经把视觉基准、资源边界、重要状态预览、数据归属和发布回溯变成可执行要求。</p></div>
           <div class="practice-list reveal">
             <div class="practice"><b>设计依据与目标设备</b><p>确认设计图、目标机型与安全区策略，避免页面在真实手机上偏移或变形。</p></div>
@@ -410,7 +417,7 @@
             <div class="practice"><b>小步验收</b><p>一次只稳定一个页面或一组关联状态，视觉确认后再推进下一项，减少扩散返工。</p></div>
             <div class="practice"><b>发布可回溯</b><p>本地验收、Git 提交、云端部署与线上验证形成对应关系，出现问题时能定位版本。</p></div>
           </div>
-        </div>
+        </div></div>
       </section>
 
       <section class="closing">
