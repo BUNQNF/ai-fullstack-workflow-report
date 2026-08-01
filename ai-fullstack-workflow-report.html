@@ -166,6 +166,9 @@
 
     .handoff-top { display: grid; grid-template-columns: .83fr 1.17fr; gap: 54px; align-items: end; margin-bottom: 36px; }
     .handoff-top .lead { margin: 0; }
+    .matrix-demo { margin: 0 0 42px; overflow: hidden; border: 1px solid #d7ddea; border-radius: var(--radius); background: #ffffff; box-shadow: 0 16px 34px rgb(71 88 132 / .12); }
+    .matrix-demo img { display: block; width: 100%; height: auto; }
+    .matrix-demo figcaption { padding: 12px 16px; border-top: 1px solid #e2e6f0; color: #647087; font-size: 13px; }
     .handoff-list { border-top: 1px solid #e2e6f0; }
     .handoff-row { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 25px; padding: 22px 0; border-bottom: 1px solid #e2e6f0; }
     .handoff-role { color: #6c5aa6; font-size: 15px; font-weight: 800; }
@@ -363,6 +366,7 @@
       <section class="handoff section" id="handoff">
         <div class="container">
           <div class="handoff-top reveal"><div><p class="eyebrow">《需求对照表》</p><h2>每一次需求变更，都能按图索骥，回溯受影响的四视图。</h2></div><p class="lead">它不是只记录需求的台账，而是变更的导航图。每条变更都标明影响视图、待更新交付物、验收动作与状态，让人和 AI 工具都能沿同一条路径完成同步。</p></div>
+          <figure class="matrix-demo reveal"><img src="assets/requirement-matrix-demo.png" width="2446" height="1472" loading="lazy" alt="《需求对照表》实机演示，展示需求项与优先级、流程原型、UI 设计、前端实现和验收用例的对应关系"><figcaption>实机演示：每条需求与流程原型、UI 设计、前端实现和验收用例建立可追溯关联。</figcaption></figure>
           <div class="handoff-list reveal">
             <div class="handoff-row"><div class="handoff-role">记录变更</div><p><b>对照表记录什么</b>需求编号、变更原因、原规则、新规则、优先级与提出时间。</p><p><b>先确认边界</b>明确这次调整改变了什么，以及哪些既有规则仍然有效。</p></div>
             <div class="handoff-row"><div class="handoff-role">定位影响</div><p><b>对照到哪些视图</b>需求视图、流程原型视图、视觉视图、运行视图的对应条目与当前状态。</p><p><b>判断影响范围</b>不凭记忆判断，直接定位必须更新的规则、状态、资产、页面或接口。</p></div>
