@@ -139,18 +139,17 @@
 
     .views-intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; align-items: end; margin-bottom: 44px; }
     .views-intro .lead { margin: 0; }
-    .solution, .handoff, .practice-section, .closing { position: relative; overflow: hidden; isolation: isolate; color: #253145; }
+    .solution, .handoff, .closing { position: relative; overflow: hidden; isolation: isolate; color: #253145; }
     .solution { background: #172131; color: #f7f9ff; }
     .handoff { background: linear-gradient(110deg, #fffdf8 0%, #f6f9ff 52%, #fff 100%); }
-    .practice-section { background: linear-gradient(110deg, #fff 0%, #f9f5ff 50%, #fffdf6 100%); }
     .closing { background: linear-gradient(120deg, #fff8f6 0%, #f6f8ff 50%, #fff 100%); }
     .solution .eyebrow { color: #c6b8ff; font-size: 18px; letter-spacing: .06em; }
     .solution .eyebrow::before { width: 34px; height: 3px; }
     .solution .lead { color: #c9d5e8; }
-    .handoff .eyebrow, .practice-section .eyebrow, .closing .eyebrow { color: #6c5aa6; }
+    .handoff .eyebrow, .closing .eyebrow { color: #6c5aa6; }
     .handoff .eyebrow { font-size: 22px; letter-spacing: .04em; }
     .handoff .eyebrow::before { width: 38px; height: 3px; }
-    .handoff .lead, .practice-section .lead { color: #647087; }
+    .handoff .lead { color: #647087; }
     .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
     .view { padding: 24px; border: 1px solid transparent; border-radius: var(--radius); background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(125deg, #a5d8ff, #d9b9ff, #ffd3bd, #f3df93, #a9e5d3) border-box; box-shadow: 0 12px 28px rgb(74 91 139 / .09); color: #253145; }
     .view:nth-child(2) { background: linear-gradient(#fbfdff, #fbfdff) padding-box, linear-gradient(125deg, #9fd9ff, #c4bcff, #f5bdff, #ffd0b2) border-box; }
@@ -173,14 +172,6 @@
     .handoff-row p { margin: 0; color: #647087; font-size: 14px; }
     .handoff-row p b { display: block; margin-bottom: 3px; color: #253145; }
 
-    .practice-section .evidence-quote { color: #647087; border-left-color: #d29ade; }
-    .evidence-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(38px, 8vw, 110px); align-items: start; }
-    .evidence-quote { padding: 24px 0 0 26px; border-left: 3px solid var(--accent); color: var(--ink-soft); font-size: 18px; line-height: 1.7; }
-    .practice-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; }
-    .practice { padding: 22px 0; border-top: 1px solid #e4e6f0; }
-    .practice b { display: block; margin-bottom: 5px; font-size: 16px; }
-    .practice p { margin: 0; color: #647087; font-size: 14px; }
-
     .closing { padding: 82px 0; }
     .closing-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: end; }
     .closing h2 { max-width: 720px; margin-bottom: 0; font-size: clamp(32px, 4vw, 54px); }
@@ -194,7 +185,7 @@
       :root { --page: min(100% - 32px, 620px); }
       .nav-links { display: none; }
       .hero { min-height: 0; padding: 56px 0 48px; }
-      .hero-grid, .pain-intro, .views-intro, .handoff-top, .evidence-grid, .closing-grid, .insight-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-grid, .pain-intro, .views-intro, .handoff-top, .closing-grid, .insight-grid { grid-template-columns: 1fr; gap: 28px; }
       .hero-copy { font-size: 16px; }
       .system-board { min-height: 448px; padding: 20px; }
       .board-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -202,7 +193,7 @@
       .carrier-grid { grid-template-columns: 1fr; gap: 12px; }
       .carrier-bridge { grid-template-columns: auto 1fr auto; gap: 10px; }
       .bridge-line { width: auto; height: 1px; }
-      .views, .practice-list, .pain-cards { grid-template-columns: 1fr; }
+      .views, .pain-cards { grid-template-columns: 1fr; }
       .pain-card:nth-child(odd), .pain-card:nth-child(even) { margin-right: 0; padding-right: 0; padding-left: 0; border-left: 0; }
       .handoff-row { grid-template-columns: 1fr; gap: 8px; }
       .insight-answer { padding-left: 18px; }
@@ -243,7 +234,6 @@
           <a href="#problem">为什么需要</a>
           <a href="#views">四个视图</a>
           <a href="#handoff">变更追踪</a>
-          <a href="#practice">实践依据</a>
         </div>
       </nav>
     </div>
@@ -380,20 +370,6 @@
             <div class="handoff-row"><div class="handoff-role">复验闭环</div><p><b>如何确认完成</b>按对照表逐项验证主路径、例外状态、视觉表现与运行结果。</p><p><b>留下版本证据</b>记录验收结果和发布版本，下一次变更可以继续从这里追溯。</p></div>
           </div>
         </div>
-      </section>
-
-      <section class="practice-section section" id="practice">
-        <div class="container"><div class="evidence-grid">
-          <div class="reveal"><p class="eyebrow">已有实践</p><h2>工作流不是额外的仪式，而是把高风险的信息显式化。</h2><p class="evidence-quote">在活动 H5 的既有规范中，我们已经把视觉基准、资源边界、重要状态预览、数据归属和发布回溯变成可执行要求。</p></div>
-          <div class="practice-list reveal">
-            <div class="practice"><b>设计依据与目标设备</b><p>确认设计图、目标机型与安全区策略，避免页面在真实手机上偏移或变形。</p></div>
-            <div class="practice"><b>静态与动态分层</b><p>固定视觉合并为背景或卡片资源；分数、昵称、按钮、列表和热点保持动态化。</p></div>
-            <div class="practice"><b>重要状态可直达</b><p>首页、弹窗、成功、失败、空态可通过预览参数独立打开，无需手动完成前置流程。</p></div>
-            <div class="practice"><b>业务数据服务端归属</b><p>积分、资格、排行榜等权威值不依赖浏览器本地存储，前端不直接篡改业务结果。</p></div>
-            <div class="practice"><b>小步验收</b><p>一次只稳定一个页面或一组关联状态，视觉确认后再推进下一项，减少扩散返工。</p></div>
-            <div class="practice"><b>发布可回溯</b><p>本地验收、Git 提交、云端部署与线上验证形成对应关系，出现问题时能定位版本。</p></div>
-          </div>
-        </div></div>
       </section>
 
       <section class="closing">
