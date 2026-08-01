@@ -103,15 +103,15 @@
     .pain { border-top: 1px solid var(--line); background: var(--surface); }
     .pain-intro { display: grid; grid-template-columns: 1.04fr .96fr; gap: clamp(36px, 7vw, 90px); align-items: end; margin-bottom: 44px; }
     .pain-intro .lead { margin-bottom: 0; }
-    .handoff-flow { padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: #f3f8f5; }
-    .handoff-flow > b { display: block; margin-bottom: 16px; color: var(--accent-deep); font-size: 13px; letter-spacing: .04em; }
+    .handoff-flow { padding: 22px; border: 1px solid #dfc4bd; border-radius: var(--radius); background: #fcf7f5; }
+    .handoff-flow > b { display: block; margin-bottom: 16px; color: #91453a; font-size: 13px; letter-spacing: .04em; }
     .flow-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; }
-    .flow-step { position: relative; min-height: 86px; padding: 12px 10px; border: 1px solid #c8dcd4; border-radius: 6px; background: white; }
-    .flow-step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -9px; z-index: 1; width: 9px; border-top: 1px solid #8db3a5; }
-    .flow-step small { display: block; margin-bottom: 6px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 800; }
-    .flow-step span { display: block; font-size: 13px; font-weight: 750; line-height: 1.35; }
-    .flow-note { display: flex; gap: 10px; margin: 16px 0 0; padding-top: 14px; border-top: 1px solid #c8dcd4; color: var(--ink-soft); font-size: 13px; }
-    .flow-note b { color: var(--accent-deep); white-space: nowrap; }
+    .flow-step { position: relative; min-height: 86px; padding: 12px 10px; border: 1px dashed #d1aaa1; border-top: 3px solid #b55b4d; border-radius: 6px; background: #fffdfc; }
+    .flow-step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -9px; z-index: 1; width: 9px; border-top: 1px dashed #bd8176; }
+    .flow-step small { display: block; margin-bottom: 6px; color: #a34b3f; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 800; }
+    .flow-step span { display: block; color: #54342e; font-size: 13px; font-weight: 750; line-height: 1.35; }
+    .flow-note { display: flex; gap: 10px; margin: 16px 0 0; padding-top: 14px; border-top: 1px dashed #d9b8b0; color: #785e58; font-size: 13px; }
+    .flow-note b { color: #91453a; white-space: nowrap; }
     .pain-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
     .pain-card { display: grid; grid-template-columns: 54px 1fr; gap: 18px; padding: 29px 28px 29px 0; border-bottom: 1px solid var(--line); }
     .pain-card:nth-child(odd) { margin-right: 28px; }
