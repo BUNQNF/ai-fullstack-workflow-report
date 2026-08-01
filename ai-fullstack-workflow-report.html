@@ -187,9 +187,13 @@
     .repo-cta h2 { max-width: 900px; margin-bottom: 22px; font-size: clamp(42px, 5vw, 66px); line-height: 1.13; }
     .repo-cta p { max-width: 760px; margin-bottom: 32px; color: #c9d5e8; font-size: 18px; }
     .repo-cta strong { color: #ffffff; }
-    .repo-link { display: inline-flex; align-items: center; min-height: 60px; padding: 14px 22px; border: 1px solid #d9d1ff; border-radius: var(--radius); background: #f4f2ff; color: #253145; font-size: 18px; font-weight: 800; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
-    .repo-link:hover, .repo-link:focus-visible { background: #ffffff; box-shadow: 0 12px 28px rgb(5 9 21 / .3); transform: translateY(-2px); outline: none; }
+    .repo-link-wrap { position: relative; display: inline-flex; }
+    .repo-link { display: inline-flex; align-items: center; min-height: 60px; padding: 14px 22px; border: 1px solid #d9d1ff; border-radius: var(--radius); background: #f4f2ff; color: #253145; font-size: 18px; font-weight: 800; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; animation: repo-breathe 2.2s ease-in-out infinite; }
+    .repo-link:hover, .repo-link:focus-visible { animation: none; background: #ffffff; box-shadow: 0 12px 28px rgb(5 9 21 / .3); transform: translateY(-2px); outline: none; }
     .repo-link:active { transform: translateY(0); }
+    .repo-click-cue { position: absolute; top: -24px; right: -22px; z-index: 1; pointer-events: none; font-size: 27px; line-height: 1; filter: drop-shadow(0 3px 4px rgb(5 9 21 / .22)); animation: repo-click 1.25s ease-in-out infinite; }
+    @keyframes repo-breathe { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgb(202 186 255 / 0); } 50% { transform: scale(1.025); box-shadow: 0 0 0 10px rgb(202 186 255 / .14); } }
+    @keyframes repo-click { 0%, 100% { transform: translateY(-3px) rotate(-12deg); } 50% { transform: translateY(5px) rotate(-3deg) scale(.93); } }
     footer { padding: 22px 0; background: #073f38; color: #a7d1c3; font-size: 12px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
 
@@ -227,12 +231,14 @@
       .board-foot { display: block; font-size: 11px; }
       .board-foot strong { display: block; margin-top: 3px; }
       .view, .carrier-panel { padding: 22px; }
+      .repo-click-cue { right: 0; }
       .footer-inner { display: block; }
       .footer-inner span { display: block; margin-top: 5px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
+      .repo-link, .repo-click-cue { animation: none; }
       * { transition-duration: .01ms !important; }
     }
   </style>
@@ -396,8 +402,8 @@
         <div class="container reveal">
           <p class="eyebrow">产品化项目</p>
           <h2 id="repo-title">四视图同步法，已经做成可运行的产品。</h2>
-          <p>GitHub 仓库 <strong>BUNQNF/traceflow-demo</strong> 完整收录第二期比赛的全部交付内容，将需求、流程、视觉、运行与变更追踪落到可查看、可继续迭代的产品中。</p>
-          <a class="repo-link" href="https://github.com/BUNQNF/traceflow-demo" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub 仓库 BUNQNF traceflow-demo">查看 BUNQNF / traceflow-demo</a>
+          <p>GitHub 仓库 <strong>BUNQNF/traceflow-demo</strong> 完整收录第二期比赛的场景一的全部交付内容，将需求、流程、视觉、运行与变更追踪落到可查看、可继续迭代的产品中。</p>
+          <span class="repo-link-wrap"><a class="repo-link" href="https://github.com/BUNQNF/traceflow-demo" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub 仓库 BUNQNF traceflow-demo">查看 BUNQNF / traceflow-demo</a><span class="repo-click-cue" aria-hidden="true">👆</span></span>
         </div>
       </section>
     </main>
