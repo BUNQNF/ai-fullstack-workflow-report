@@ -100,13 +100,28 @@
 
     section { scroll-margin-top: 74px; }
     .section { padding: 104px 0; }
-    .problem-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(34px, 8vw, 110px); align-items: start; }
-    .switch-list { border-top: 1px solid var(--line); }
-    .switch-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
-    .switch-index { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; font-weight: 800; }
-    .switch-row b { display: block; font-size: 16px; }
-    .switch-row span { color: var(--ink-soft); font-size: 14px; }
-    .switch-result { color: var(--accent-deep); font-size: 13px; font-weight: 800; text-align: right; }
+    .pain { border-top: 1px solid var(--line); background: var(--surface); }
+    .pain-intro { display: grid; grid-template-columns: 1.04fr .96fr; gap: clamp(36px, 7vw, 90px); align-items: end; margin-bottom: 44px; }
+    .pain-intro .lead { margin-bottom: 0; }
+    .handoff-flow { padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: #f3f8f5; }
+    .handoff-flow > b { display: block; margin-bottom: 16px; color: var(--accent-deep); font-size: 13px; letter-spacing: .04em; }
+    .flow-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; align-items: center; }
+    .flow-step { position: relative; min-height: 86px; padding: 12px 10px; border: 1px solid #c8dcd4; border-radius: 6px; background: white; }
+    .flow-step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -9px; z-index: 1; width: 9px; border-top: 1px solid #8db3a5; }
+    .flow-step small { display: block; margin-bottom: 6px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 800; }
+    .flow-step span { display: block; font-size: 13px; font-weight: 750; line-height: 1.35; }
+    .flow-note { display: flex; gap: 10px; margin: 16px 0 0; padding-top: 14px; border-top: 1px solid #c8dcd4; color: var(--ink-soft); font-size: 13px; }
+    .flow-note b { color: var(--accent-deep); white-space: nowrap; }
+    .pain-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+    .pain-card { display: grid; grid-template-columns: 54px 1fr; gap: 18px; padding: 29px 28px 29px 0; border-bottom: 1px solid var(--line); }
+    .pain-card:nth-child(odd) { margin-right: 28px; }
+    .pain-card:nth-child(even) { padding-right: 0; padding-left: 28px; border-left: 1px solid var(--line); }
+    .pain-no { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; letter-spacing: .04em; }
+    .pain-card h3 { margin: 0 0 8px; font-size: 20px; }
+    .pain-card p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+    .pain-conclusion { display: grid; grid-template-columns: 170px 1fr; gap: 25px; margin-top: 32px; padding: 24px 26px; border-left: 3px solid var(--accent); background: var(--mist); }
+    .pain-conclusion b { color: var(--accent-deep); font-size: 14px; }
+    .pain-conclusion p { margin: 0; color: var(--ink-soft); font-size: 16px; }
 
     .carrier { background: var(--ink); color: white; }
     .carrier .eyebrow { color: #91d6c5; }
@@ -169,14 +184,15 @@
       :root { --page: min(100% - 32px, 620px); }
       .nav-links { display: none; }
       .hero { min-height: 0; padding: 56px 0 48px; }
-      .hero-grid, .problem-grid, .views-intro, .handoff-top, .evidence-grid, .closing-grid, .insight-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-grid, .pain-intro, .views-intro, .handoff-top, .evidence-grid, .closing-grid, .insight-grid { grid-template-columns: 1fr; gap: 28px; }
       .hero-copy { font-size: 16px; }
       .system-board { min-height: 448px; padding: 20px; }
       .board-foot { right: 20px; left: 20px; }
       .carrier-grid { grid-template-columns: 1fr; gap: 12px; }
       .carrier-bridge { grid-template-columns: auto 1fr auto; gap: 10px; }
       .bridge-line { width: auto; height: 1px; }
-      .views, .practice-list { grid-template-columns: 1fr; }
+      .views, .practice-list, .pain-cards { grid-template-columns: 1fr; }
+      .pain-card:nth-child(odd), .pain-card:nth-child(even) { margin-right: 0; padding-right: 0; padding-left: 0; border-left: 0; }
       .handoff-row { grid-template-columns: 1fr; gap: 8px; }
       .insight-answer { padding-left: 18px; }
     }
@@ -185,8 +201,10 @@
       h1 { font-size: 42px; }
       h2 { font-size: 30px; }
       .section { padding: 68px 0; }
-      .switch-row { grid-template-columns: 45px 1fr; gap: 10px; }
-      .switch-result { grid-column: 2; text-align: left; }
+      .flow-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow-step:nth-child(2)::after { display: none; }
+      .pain-card { grid-template-columns: 42px 1fr; gap: 12px; }
+      .pain-conclusion { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
       .system-board { min-height: 470px; padding: 16px; }
       .board-side { width: calc(50% - 13px); }
       .board-side.right { margin-top: -178px; }
@@ -251,33 +269,46 @@
         </div>
       </section>
 
-      <section class="insight-strip">
-        <div class="container insight-grid reveal">
-          <p class="insight-question">真正需要被管理的，不是工具使用顺序，而是信息能否在不同执行者之间保持完整。</p>
-          <div class="insight-answer">如果阶段性交付物只能由原始对话理解，AI 的速度就会在每一次换人、换工具时被抵消。工作流要解决的是这个断点。</div>
+      <section class="pain section" id="problem">
+        <div class="container">
+          <div class="pain-intro reveal">
+            <div>
+              <p class="eyebrow">当前协作断点</p>
+              <h2>需求在流转，但项目事实没有被统一管理。</h2>
+              <p class="lead">业务、产品、设计、研发等角色仍主要通过口头沟通和 Excel 台账传递需求。每个角色都在推进自己的工作，但需求、原型、UI 与代码之间缺少可关联、可确认、可追溯的共同载体。</p>
+            </div>
+            <div class="handoff-flow" aria-label="当前以口头沟通和 Excel 台账为主的协作方式">
+              <b>当前主要传递方式</b>
+              <div class="flow-track">
+                <div class="flow-step"><small>01</small><span>业务需求</span></div>
+                <div class="flow-step"><small>02</small><span>产品与原型</span></div>
+                <div class="flow-step"><small>03</small><span>UI 设计</span></div>
+                <div class="flow-step"><small>04</small><span>前端开发</span></div>
+              </div>
+              <p class="flow-note"><b>口头沟通 + Excel</b><span>需求变化被手工记录在阶段之间，无法自动关联后续产物。</span></p>
+            </div>
+          </div>
+          <div class="pain-cards reveal">
+            <article class="pain-card"><span class="pain-no">P-01</span><div><h3>环节独立，周期被拉长</h3><p>需求沟通、原型绘制、UI 设计和前端开发由人工分别完成，缺少工具与产物联动。每一次信息传递都需要重新解释，研发及迭代周期随之增长。</p></div></article>
+            <article class="pain-card"><span class="pain-no">P-02</span><div><h3>变更无法关联和追溯</h3><p>业务需求频繁变更或临时新增时，Excel 只能记录一条事项，无法同步关联受影响的原型、UI 设计与前端代码，也难以还原变更过程。</p></div></article>
+            <article class="pain-card"><span class="pain-no">P-03</span><div><h3>版本不一致，重复返工</h3><p>信息同步、确认和版本管理机制不完善。需求调整后，多角色需要各自修改，容易产生理解偏差、版本不一致和重复返工。</p></div></article>
+            <article class="pain-card"><span class="pain-no">P-04</span><div><h3>协作缺少交付闭环</h3><p>跨部门协作缺少明确的角色权限、任务流转、审核确认和交付闭环。问题往往在后续环节才暴露，责任与验收依据也难以回看。</p></div></article>
+          </div>
+          <div class="pain-conclusion reveal"><b>问题的本质</b><p>不是任何单一角色效率不足，而是同一项目没有一组能随角色、工具和阶段流转的已确认事实。四视图工作法正是为这个断点建立最小、可交接的共同语言。</p></div>
         </div>
       </section>
 
-      <section class="section container" id="problem">
-        <div class="problem-grid">
-          <div class="reveal">
-            <p class="eyebrow">真实痛点</p>
-            <h2>AI 全栈已经在做项目，不是在做一个孤立的对话。</h2>
-            <p class="lead">实际交付中，角色、工具和交付形态都会变化。每一种变化都需要拿得走、接得住的信息。</p>
-          </div>
-          <div class="switch-list reveal">
-            <div class="switch-row"><span class="switch-index">01</span><div><b>运营提供需求</b><span>不是一句描述，而是范围、规则、内容归属与验收条件。</span></div><span class="switch-result">可直接进入需求判断</span></div>
-            <div class="switch-row"><span class="switch-index">02</span><div><b>设计师接管 UI</b><span>需要流程、关键状态、内容层级与不能改变的交互约束。</span></div><span class="switch-result">可独立完成视觉工作</span></div>
-            <div class="switch-row"><span class="switch-index">03</span><div><b>工程师接管开发</b><span>需要视觉依据、动态边界、数据契约与可复现的验收路径。</span></div><span class="switch-result">可继续实现与联调</span></div>
-            <div class="switch-row"><span class="switch-index">04</span><div><b>更换 AI 工具</b><span>需要已确认的项目事实，而不是让新工具重新阅读一段长对话。</span></div><span class="switch-result">可无损续接上下文</span></div>
-          </div>
+      <section class="insight-strip">
+        <div class="container insight-grid reveal">
+          <p class="insight-question">真正需要被管理的，不是工具使用顺序，而是项目事实能否在不同执行者之间保持完整。</p>
+          <div class="insight-answer">四视图将项目拆成按关注点负责的可交接产出。它们不要求所有人使用同一个工具，却要求任何接手方都能理解边界、状态和验收条件。</div>
         </div>
       </section>
 
       <section class="carrier section">
         <div class="container">
           <div class="reveal">
-            <p class="eyebrow">关键判断</p>
+            <p class="eyebrow">四视图的共同原则</p>
             <h2>高保真原型和静态运行页面，可以是同一个载体。</h2>
             <p class="lead">它们不必因工具或代码形式不同而割裂。真正的区分是面向谁交付，以及需要证明到什么程度。</p>
           </div>
