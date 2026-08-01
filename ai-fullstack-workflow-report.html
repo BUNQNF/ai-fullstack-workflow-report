@@ -240,7 +240,7 @@
         <div class="nav-links">
           <a href="#problem">为什么需要</a>
           <a href="#views">四个视图</a>
-          <a href="#handoff">如何接手</a>
+          <a href="#handoff">变更追踪</a>
           <a href="#practice">实践依据</a>
         </div>
       </nav>
@@ -370,12 +370,12 @@
 
       <section class="handoff section" id="handoff">
         <div class="container">
-          <div class="handoff-top reveal"><div><p class="eyebrow">交接能力</p><h2>不同角色进入项目时，拿到的是足以继续工作的依据。</h2></div><p class="lead">交接不是“把文件发出去”。接手方应能在没有隐藏聊天上下文的情况下，判断自己该做什么、什么不能改变、做到何种程度算完成。</p></div>
+          <div class="handoff-top reveal"><div><p class="eyebrow">需求对照表</p><h2>每一次需求变更，都能按图索骥，回溯受影响的四视图。</h2></div><p class="lead">它不是只记录需求的台账，而是变更的导航图。每条变更都标明影响视图、待更新交付物、验收动作与状态，让人和 AI 工具都能沿同一条路径完成同步。</p></div>
           <div class="handoff-list reveal">
-            <div class="handoff-row"><div class="handoff-role">运营 / 产品</div><p><b>从需求视图获得</b>目标、P0/P1、规则、内容与数据归属、验收条件。</p><p><b>能够继续做</b>补齐内容和业务规则，确认范围，按验收结果判断是否交付。</p></div>
-            <div class="handoff-row"><div class="handoff-role">设计</div><p><b>从流程和视觉视图获得</b>关键状态、内容优先级、操作反馈、目标端和不能变更的约束。</p><p><b>能够继续做</b>形成关键帧与组件规则，并把视觉调整限定在已确认的行为范围内。</p></div>
-            <div class="handoff-row"><div class="handoff-role">前端 / 后端</div><p><b>从视觉和运行视图获得</b>视觉基准、静态动态边界、数据/API 契约、状态预览和验收路径。</p><p><b>能够继续做</b>实现、联调和修复，不必从设计图或聊天记录猜业务规则。</p></div>
-            <div class="handoff-row"><div class="handoff-role">测试 / 发布</div><p><b>从需求、流程和运行视图获得</b>可复现状态、预期结果、版本环境、已知限制和回退信息。</p><p><b>能够继续做</b>独立验证、记录证据，并保证线上版本与已验收版本对应。</p></div>
+            <div class="handoff-row"><div class="handoff-role">记录变更</div><p><b>对照表记录什么</b>需求编号、变更原因、原规则、新规则、优先级与提出时间。</p><p><b>先确认边界</b>明确这次调整改变了什么，以及哪些既有规则仍然有效。</p></div>
+            <div class="handoff-row"><div class="handoff-role">定位影响</div><p><b>对照到哪些视图</b>需求视图、流程原型视图、视觉视图、运行视图的对应条目与当前状态。</p><p><b>判断影响范围</b>不凭记忆判断，直接定位必须更新的规则、状态、资产、页面或接口。</p></div>
+            <div class="handoff-row"><div class="handoff-role">回溯更新</div><p><b>更新哪些交付物</b>同步修改受影响的业务规则、状态帧、组件与资源、页面、API 契约和验证记录。</p><p><b>让四视图重新对齐</b>每个更新都有明确责任、完成状态与可查看的交付物链接。</p></div>
+            <div class="handoff-row"><div class="handoff-role">复验闭环</div><p><b>如何确认完成</b>按对照表逐项验证主路径、例外状态、视觉表现与运行结果。</p><p><b>留下版本证据</b>记录验收结果和发布版本，下一次变更可以继续从这里追溯。</p></div>
           </div>
         </div>
       </section>
