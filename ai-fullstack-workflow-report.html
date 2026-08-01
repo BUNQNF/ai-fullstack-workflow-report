@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="zh-CN" data-signature="jsy">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI 全栈四视图工作流能力汇报">
+  <meta name="author" content="江水瑶 | Jiang Shuiyao | JSY">
+  <meta name="creator" content="jsy">
+  <title>AI 全栈工作流 | 可切换的协作能力</title>
+  <style>
+    :root {
+      --ink: #102220;
+      --ink-soft: #48605c;
+      --paper: #f5f8f6;
+      --surface: #ffffff;
+      --line: #d5e1dc;
+      --mist: #e9f1ed;
+      --accent: #007f70;
+      --accent-deep: #005e53;
+      --accent-pale: #d8f1e9;
+      --warm: #f7efe2;
+      --warm-line: #e8d8be;
+      --radius: 8px;
+      --page: min(1180px, calc(100% - 48px));
+      --jsy-reveal-distance: 16px;
+      --jsy-reveal-duration: 420ms;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { overflow: clip; }
+    .container { width: var(--page); margin: 0 auto; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--accent-deep);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h2 { margin-bottom: 16px; font-size: clamp(28px, 3.1vw, 44px); line-height: 1.22; letter-spacing: 0; }
+    h3 { font-size: 20px; line-height: 1.35; letter-spacing: 0; }
+    .lead { max-width: 620px; color: var(--ink-soft); font-size: 17px; }
+    .reveal { opacity: 0; transform: translateY(var(--jsy-reveal-distance)); transition: opacity var(--jsy-reveal-duration) ease, transform var(--jsy-reveal-duration) ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .nav-wrap { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgb(213 225 220 / .72); background: rgb(245 248 246 / .93); backdrop-filter: blur(14px); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 62px; }
+    .brand { font-size: 14px; font-weight: 800; letter-spacing: .02em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 22px; color: var(--ink-soft); font-size: 13px; }
+    .nav-links a { padding: 8px 0; border-bottom: 2px solid transparent; transition: border-color 180ms ease, color 180ms ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); border-color: var(--accent); outline: none; }
+
+    .hero { padding: 78px 0 56px; min-height: 84dvh; display: grid; align-content: center; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, .98fr) minmax(430px, 1.02fr); gap: clamp(42px, 7vw, 96px); align-items: center; }
+    h1 { max-width: 670px; margin-bottom: 22px; font-size: clamp(42px, 5vw, 72px); line-height: 1.08; letter-spacing: 0; }
+    h1 strong { color: var(--accent-deep); font-weight: 800; }
+    .hero-copy { max-width: 570px; margin-bottom: 30px; color: var(--ink-soft); font-size: 18px; }
+    .hero-note { display: flex; align-items: flex-start; gap: 12px; max-width: 520px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; }
+    .hero-note b { flex: 0 0 auto; color: var(--accent-deep); }
+
+    .system-board { position: relative; min-height: 480px; padding: 28px; border: 1px solid #bad1c9; border-radius: var(--radius); background: #eaf3ef; box-shadow: 0 18px 45px rgb(23 74 62 / .11); }
+    .board-caption { display: flex; justify-content: space-between; margin-bottom: 28px; color: var(--ink-soft); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .board-caption b { color: var(--accent-deep); }
+    .switch-lane { position: absolute; top: 89px; bottom: 45px; left: 50%; width: 2px; background: #a5c7bb; }
+    .switch-lane::after { content: ""; position: absolute; left: -5px; bottom: -1px; width: 10px; height: 10px; border-right: 2px solid #7ea798; border-bottom: 2px solid #7ea798; transform: rotate(45deg); }
+    .board-side { position: relative; display: grid; gap: 13px; width: calc(50% - 20px); }
+    .board-side.right { margin-left: auto; margin-top: -172px; }
+    .board-title { margin: 0 0 10px; color: var(--ink-soft); font-size: 12px; font-weight: 800; letter-spacing: .06em; }
+    .token { position: relative; padding: 15px 15px 14px; border: 1px solid #c7ddd5; border-radius: 6px; background: rgb(255 255 255 / .92); }
+    .token::after { content: ""; position: absolute; top: 50%; width: 20px; border-top: 1px dashed #7ea798; }
+    .left .token::after { right: -21px; }
+    .right .token::after { left: -21px; }
+    .token small { display: block; margin-bottom: 3px; color: var(--accent-deep); font-size: 11px; font-weight: 800; letter-spacing: .06em; }
+    .token b { display: block; font-size: 15px; }
+    .token span { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 12px; }
+    .board-core { position: absolute; z-index: 1; right: calc(50% - 62px); top: 216px; display: grid; place-items: center; width: 124px; aspect-ratio: 1; border: 7px solid #d7eee6; border-radius: 50%; background: var(--accent-deep); color: white; text-align: center; box-shadow: 0 0 0 1px #74a99a; }
+    .board-core b { display: block; font-size: 15px; }
+    .board-core span { display: block; margin-top: 2px; font-size: 11px; opacity: .78; }
+    .board-foot { position: absolute; right: 28px; bottom: 21px; left: 28px; display: flex; justify-content: space-between; padding-top: 15px; border-top: 1px solid #c7ddd5; color: var(--ink-soft); font-size: 12px; }
+    .board-foot strong { color: var(--accent-deep); }
+
+    .insight-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+    .insight-grid { display: grid; grid-template-columns: 1.16fr .84fr; gap: 30px; padding: 38px 0; }
+    .insight-question { margin: 0; font-size: clamp(24px, 2.5vw, 34px); font-weight: 750; line-height: 1.35; }
+    .insight-answer { padding-left: 28px; border-left: 3px solid var(--accent); color: var(--ink-soft); font-size: 16px; }
+
+    section { scroll-margin-top: 74px; }
+    .section { padding: 104px 0; }
+    .problem-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(34px, 8vw, 110px); align-items: start; }
+    .switch-list { border-top: 1px solid var(--line); }
+    .switch-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 20px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .switch-index { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; font-weight: 800; }
+    .switch-row b { display: block; font-size: 16px; }
+    .switch-row span { color: var(--ink-soft); font-size: 14px; }
+    .switch-result { color: var(--accent-deep); font-size: 13px; font-weight: 800; text-align: right; }
+
+    .carrier { background: var(--ink); color: white; }
+    .carrier .eyebrow { color: #91d6c5; }
+    .carrier .lead { color: #b6c8c2; }
+    .carrier-grid { display: grid; grid-template-columns: 1fr 84px 1fr; gap: 26px; align-items: stretch; margin-top: 42px; }
+    .carrier-panel { padding: 30px; border: 1px solid #35504b; border-radius: var(--radius); background: #18312d; }
+    .carrier-panel h3 { margin-bottom: 10px; font-size: 24px; }
+    .carrier-panel p { margin-bottom: 20px; color: #b6c8c2; }
+    .carrier-panel ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .carrier-panel li { padding-left: 17px; position: relative; color: #e1ece8; font-size: 14px; }
+    .carrier-panel li::before { content: ""; position: absolute; top: .7em; left: 0; width: 7px; height: 7px; border-radius: 50%; background: #75c7b3; }
+    .carrier-bridge { display: grid; place-items: center; color: #91d6c5; font-size: 13px; font-weight: 800; text-align: center; }
+    .bridge-line { width: 100%; height: 1px; background: #5a8f83; }
+    .bridge-label { padding: 9px 0; line-height: 1.35; }
+
+    .views-intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; align-items: end; margin-bottom: 44px; }
+    .views-intro .lead { margin: 0; }
+    .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .view { padding: 29px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .view:nth-child(2) { background: #f3faf7; }
+    .view:nth-child(3) { background: #fbf8f1; border-color: var(--warm-line); }
+    .view:nth-child(4) { background: #edf6f3; }
+    .view-head { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
+    .view-no { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; }
+    .view h3 { margin: 0; font-size: 25px; }
+    .view-question { margin: 0 0 19px; color: var(--ink-soft); font-size: 15px; }
+    .field { padding: 15px 0; border-top: 1px solid rgb(16 34 32 / .11); }
+    .field:last-child { padding-bottom: 0; }
+    .field-label { display: block; margin-bottom: 7px; color: var(--accent-deep); font-size: 11px; font-weight: 800; letter-spacing: .06em; }
+    .field p { margin: 0; font-size: 14px; }
+    .field b { font-weight: 800; }
+
+    .handoff { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .handoff-top { display: grid; grid-template-columns: .83fr 1.17fr; gap: 54px; align-items: end; margin-bottom: 36px; }
+    .handoff-top .lead { margin: 0; }
+    .handoff-list { border-top: 1px solid var(--line); }
+    .handoff-row { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 25px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .handoff-role { color: var(--accent-deep); font-size: 15px; font-weight: 800; }
+    .handoff-row p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+    .handoff-row p b { display: block; margin-bottom: 3px; color: var(--ink); }
+
+    .evidence-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(38px, 8vw, 110px); align-items: start; }
+    .evidence-quote { padding: 24px 0 0 26px; border-left: 3px solid var(--accent); color: var(--ink-soft); font-size: 18px; line-height: 1.7; }
+    .practice-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; }
+    .practice { padding: 22px 0; border-top: 1px solid var(--line); }
+    .practice b { display: block; margin-bottom: 5px; font-size: 16px; }
+    .practice p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+    .closing { padding: 82px 0; background: var(--accent-deep); color: white; }
+    .closing-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: end; }
+    .closing .eyebrow { color: #b7e8d9; }
+    .closing h2 { max-width: 720px; margin-bottom: 0; font-size: clamp(32px, 4vw, 54px); }
+    .closing-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .closing-list li { padding: 13px 0; border-top: 1px solid rgb(202 239 227 / .36); color: #e0f4ec; font-size: 15px; }
+    .closing-list b { color: white; }
+    footer { padding: 22px 0; background: #073f38; color: #a7d1c3; font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    @media (max-width: 820px) {
+      :root { --page: min(100% - 32px, 620px); }
+      .nav-links { display: none; }
+      .hero { min-height: 0; padding: 56px 0 48px; }
+      .hero-grid, .problem-grid, .views-intro, .handoff-top, .evidence-grid, .closing-grid, .insight-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-copy { font-size: 16px; }
+      .system-board { min-height: 448px; padding: 20px; }
+      .board-foot { right: 20px; left: 20px; }
+      .carrier-grid { grid-template-columns: 1fr; gap: 12px; }
+      .carrier-bridge { grid-template-columns: auto 1fr auto; gap: 10px; }
+      .bridge-line { width: auto; height: 1px; }
+      .views, .practice-list { grid-template-columns: 1fr; }
+      .handoff-row { grid-template-columns: 1fr; gap: 8px; }
+      .insight-answer { padding-left: 18px; }
+    }
+    @media (max-width: 480px) {
+      :root { --page: min(100% - 28px, 620px); }
+      h1 { font-size: 42px; }
+      h2 { font-size: 30px; }
+      .section { padding: 68px 0; }
+      .switch-row { grid-template-columns: 45px 1fr; gap: 10px; }
+      .switch-result { grid-column: 2; text-align: left; }
+      .system-board { min-height: 470px; padding: 16px; }
+      .board-side { width: calc(50% - 13px); }
+      .board-side.right { margin-top: -178px; }
+      .token { padding: 12px 9px; }
+      .token b { font-size: 13px; }
+      .token span { font-size: 11px; }
+      .board-core { right: calc(50% - 51px); top: 218px; width: 102px; border-width: 5px; }
+      .board-foot { font-size: 10px; }
+      .view, .carrier-panel { padding: 22px; }
+      .footer-inner { display: block; }
+      .footer-inner span { display: block; margin-top: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="nav-wrap">
+      <nav class="nav container" aria-label="页面导航">
+        <a class="brand" href="#top">AI 全栈 <span>/</span> 工作流能力</a>
+        <div class="nav-links">
+          <a href="#problem">为什么需要</a>
+          <a href="#views">四个视图</a>
+          <a href="#handoff">如何接手</a>
+          <a href="#practice">实践依据</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Crafted and maintained by 江水瑶 / Jiang Shuiyao / JSY. -->
+    <main id="top" data-owner="jsy">
+      <section class="hero container">
+        <div class="hero-grid">
+          <div class="reveal">
+            <p class="eyebrow">能力建设汇报</p>
+            <h1>AI 全栈的价值，不是替代传统协作，而是<strong>随时可以切换</strong>。</h1>
+            <p class="hero-copy">当需求来自运营，UI 交给设计师，开发转由工程师完成，或我们更换一个 AI 工具，项目都不应回到“重新解释一遍”的起点。</p>
+            <div class="hero-note"><b>核心主张</b><span>用四类可交接的产出，保留 AI 的生成速度，同时让传统角色和新的 AI 工具都能立即进入工作。</span></div>
+          </div>
+          <div class="system-board reveal" aria-label="AI 工作流与传统工作流的双向协作示意">
+            <div class="board-caption"><span>PROJECT CONTINUITY MAP</span><b>双向切换</b></div>
+            <div class="switch-lane" aria-hidden="true"></div>
+            <div class="board-side left">
+              <p class="board-title">传统协作输入</p>
+              <div class="token"><small>运营 / 产品</small><b>目标、内容与规则</b><span>业务边界和验收要求</span></div>
+              <div class="token"><small>设计</small><b>关键状态与视觉资产</b><span>组件、素材与响应式规则</span></div>
+              <div class="token"><small>工程 / QA</small><b>数据契约与验证证据</b><span>接口、预览路径与发布记录</span></div>
+            </div>
+            <div class="board-core"><div><b>四视图</b><span>最小交接集合</span></div></div>
+            <div class="board-side right">
+              <p class="board-title">AI 连续推进</p>
+              <div class="token"><small>AI 工具 A</small><b>梳理需求与流程</b><span>不依赖完整聊天记录</span></div>
+              <div class="token"><small>AI 工具 B</small><b>生成视觉与静态页面</b><span>按已确认状态制作</span></div>
+              <div class="token"><small>AI 工具 C</small><b>实现行为与交付验证</b><span>基于契约继续开发</span></div>
+            </div>
+            <div class="board-foot"><span>切换的是执行者，不是项目事实</span><strong>交接不重做</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="insight-strip">
+        <div class="container insight-grid reveal">
+          <p class="insight-question">真正需要被管理的，不是工具使用顺序，而是信息能否在不同执行者之间保持完整。</p>
+          <div class="insight-answer">如果阶段性交付物只能由原始对话理解，AI 的速度就会在每一次换人、换工具时被抵消。工作流要解决的是这个断点。</div>
+        </div>
+      </section>
+
+      <section class="section container" id="problem">
+        <div class="problem-grid">
+          <div class="reveal">
+            <p class="eyebrow">真实痛点</p>
+            <h2>AI 全栈已经在做项目，不是在做一个孤立的对话。</h2>
+            <p class="lead">实际交付中，角色、工具和交付形态都会变化。每一种变化都需要拿得走、接得住的信息。</p>
+          </div>
+          <div class="switch-list reveal">
+            <div class="switch-row"><span class="switch-index">01</span><div><b>运营提供需求</b><span>不是一句描述，而是范围、规则、内容归属与验收条件。</span></div><span class="switch-result">可直接进入需求判断</span></div>
+            <div class="switch-row"><span class="switch-index">02</span><div><b>设计师接管 UI</b><span>需要流程、关键状态、内容层级与不能改变的交互约束。</span></div><span class="switch-result">可独立完成视觉工作</span></div>
+            <div class="switch-row"><span class="switch-index">03</span><div><b>工程师接管开发</b><span>需要视觉依据、动态边界、数据契约与可复现的验收路径。</span></div><span class="switch-result">可继续实现与联调</span></div>
+            <div class="switch-row"><span class="switch-index">04</span><div><b>更换 AI 工具</b><span>需要已确认的项目事实，而不是让新工具重新阅读一段长对话。</span></div><span class="switch-result">可无损续接上下文</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="carrier section">
+        <div class="container">
+          <div class="reveal">
+            <p class="eyebrow">关键判断</p>
+            <h2>高保真原型和静态运行页面，可以是同一个载体。</h2>
+            <p class="lead">它们不必因工具或代码形式不同而割裂。真正的区分是面向谁交付，以及需要证明到什么程度。</p>
+          </div>
+          <div class="carrier-grid reveal">
+            <article class="carrier-panel">
+              <h3>原型的验收范围</h3>
+              <p>它证明用户能否顺畅走完核心路径，并让产品、设计在投入实现前确认关键判断。</p>
+              <ul><li>核心操作与状态转换成立</li><li>信息层级与反馈方式可理解</li><li>明确哪些行为仍为模拟</li></ul>
+            </article>
+            <div class="carrier-bridge"><div class="bridge-line"></div><div class="bridge-label">同一页面<br>不同交付范围</div><div class="bridge-line"></div></div>
+            <article class="carrier-panel">
+              <h3>运行页的验收范围</h3>
+              <p>它在原型的基础上承担真实行为、数据边界、例外状态、验证证据和可交付性。</p>
+              <ul><li>数据和 API 契约可被实现与验证</li><li>空态、错误、限制与恢复可复现</li><li>版本、发布和回退有据可查</li></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" id="views">
+        <div class="views-intro reveal">
+          <div><p class="eyebrow">解决方案</p><h2>四个视图，分别为不同协作关系提供可用产出。</h2></div>
+          <p class="lead">它们不是四份为了齐全而创建的文档，更不是自动同步的“唯一真相”。每个视图按关注点拥有事实，再通过状态、映射与验收暴露不一致。</p>
+        </div>
+        <div class="views">
+          <article class="view reveal">
+            <div class="view-head"><span class="view-no">VIEW 01</span><h3>需求视图</h3></div>
+            <p class="view-question">回答：为什么做、做什么、什么算完成？</p>
+            <div class="field"><span class="field-label">交付物</span><p>目标与边界、P0/P1 优先级、不做项、业务规则、数据边界、可观察的验收条件。</p></div>
+            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>运营与产品</b>据此补充内容、规则、外部配置；<b>测试</b>据此写出通过或失败条件。</p></div>
+            <div class="field"><span class="field-label">AI 如何切换</span><p>新工具只需读取已确认的目标、规则和限制，即可继续拆解或实现，不必追溯完整对话。</p></div>
+            <div class="field"><span class="field-label">避免的风险</span><p>将口头需求误当作实现细节，或在开发中无声地扩大范围。</p></div>
+          </article>
+          <article class="view reveal">
+            <div class="view-head"><span class="view-no">VIEW 02</span><h3>流程原型视图</h3></div>
+            <p class="view-question">回答：用户怎么走，系统怎么反馈和变化？</p>
+            <div class="field"><span class="field-label">交付物</span><p>主路径、页面与状态清单、稳定状态 ID、操作到反馈到数据变化表、空态、错误、权限与恢复路径。</p></div>
+            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>产品</b>确认流程闭环；<b>设计</b>据此安排关键画面和反馈；<b>测试</b>据此覆盖关键状态。</p></div>
+            <div class="field"><span class="field-label">AI 如何切换</span><p>明确的状态与转移可让新工具继续推理，避免只完成“看起来能演示”的主流程。</p></div>
+            <div class="field"><span class="field-label">避免的风险</span><p>遗漏失败、空态、取消、恢复等真正影响交付质量的场景。</p></div>
+          </article>
+          <article class="view reveal">
+            <div class="view-head"><span class="view-no">VIEW 03</span><h3>视觉视图</h3></div>
+            <p class="view-question">回答：每个确认状态应该如何被看见和理解？</p>
+            <div class="field"><span class="field-label">交付物</span><p>关键状态帧、组件与变体、资产清单和导出规则、设计令牌、静态与动态边界、响应式规则。</p></div>
+            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>设计师</b>可直接制作或修订视觉；<b>前端</b>可据此实现布局、资源与动态元素。</p></div>
+            <div class="field"><span class="field-label">AI 如何切换</span><p>AI 只修改指定状态并遵守明确约束，避免因为模糊指令而扩散修改到其他页面。</p></div>
+            <div class="field"><span class="field-label">避免的风险</span><p>把会变化的数据做死在背景图中，或让设计稿与实际状态表达不同含义。</p></div>
+          </article>
+          <article class="view reveal">
+            <div class="view-head"><span class="view-no">VIEW 04</span><h3>运行视图</h3></div>
+            <p class="view-question">回答：真实页面如何执行、验证、上线和回溯？</p>
+            <div class="field"><span class="field-label">交付物</span><p>可运行页面、数据/API 契约、状态直达预览路径、测试或人工验证证据、构建记录、发布版本与已知限制。</p></div>
+            <div class="field"><span class="field-label">传统工作流如何接手</span><p><b>前后端、测试与发布人员</b>可独立复现、联调、验收与追溯，无需依赖页面截图。</p></div>
+            <div class="field"><span class="field-label">AI 如何切换</span><p>新工具从可运行状态、接口边界和验证入口继续修复或扩展，成果可被立即检查。</p></div>
+            <div class="field"><span class="field-label">避免的风险</span><p>状态无法复现、数据归属不清、发布版本无法对应和交付只剩静态展示。</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="handoff section" id="handoff">
+        <div class="container">
+          <div class="handoff-top reveal"><div><p class="eyebrow">交接能力</p><h2>不同角色进入项目时，拿到的是足以继续工作的依据。</h2></div><p class="lead">交接不是“把文件发出去”。接手方应能在没有隐藏聊天上下文的情况下，判断自己该做什么、什么不能改变、做到何种程度算完成。</p></div>
+          <div class="handoff-list reveal">
+            <div class="handoff-row"><div class="handoff-role">运营 / 产品</div><p><b>从需求视图获得</b>目标、P0/P1、规则、内容与数据归属、验收条件。</p><p><b>能够继续做</b>补齐内容和业务规则，确认范围，按验收结果判断是否交付。</p></div>
+            <div class="handoff-row"><div class="handoff-role">设计</div><p><b>从流程和视觉视图获得</b>关键状态、内容优先级、操作反馈、目标端和不能变更的约束。</p><p><b>能够继续做</b>形成关键帧与组件规则，并把视觉调整限定在已确认的行为范围内。</p></div>
+            <div class="handoff-row"><div class="handoff-role">前端 / 后端</div><p><b>从视觉和运行视图获得</b>视觉基准、静态动态边界、数据/API 契约、状态预览和验收路径。</p><p><b>能够继续做</b>实现、联调和修复，不必从设计图或聊天记录猜业务规则。</p></div>
+            <div class="handoff-row"><div class="handoff-role">测试 / 发布</div><p><b>从需求、流程和运行视图获得</b>可复现状态、预期结果、版本环境、已知限制和回退信息。</p><p><b>能够继续做</b>独立验证、记录证据，并保证线上版本与已验收版本对应。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" id="practice">
+        <div class="evidence-grid">
+          <div class="reveal"><p class="eyebrow">已有实践</p><h2>工作流不是额外的仪式，而是把高风险的信息显式化。</h2><p class="evidence-quote">在活动 H5 的既有规范中，我们已经把视觉基准、资源边界、重要状态预览、数据归属和发布回溯变成可执行要求。</p></div>
+          <div class="practice-list reveal">
+            <div class="practice"><b>设计依据与目标设备</b><p>确认设计图、目标机型与安全区策略，避免页面在真实手机上偏移或变形。</p></div>
+            <div class="practice"><b>静态与动态分层</b><p>固定视觉合并为背景或卡片资源；分数、昵称、按钮、列表和热点保持动态化。</p></div>
+            <div class="practice"><b>重要状态可直达</b><p>首页、弹窗、成功、失败、空态可通过预览参数独立打开，无需手动完成前置流程。</p></div>
+            <div class="practice"><b>业务数据服务端归属</b><p>积分、资格、排行榜等权威值不依赖浏览器本地存储，前端不直接篡改业务结果。</p></div>
+            <div class="practice"><b>小步验收</b><p>一次只稳定一个页面或一组关联状态，视觉确认后再推进下一项，减少扩散返工。</p></div>
+            <div class="practice"><b>发布可回溯</b><p>本地验收、Git 提交、云端部署与线上验证形成对应关系，出现问题时能定位版本。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="container closing-grid reveal">
+          <div><p class="eyebrow">结论</p><h2>我们搭建的不是另一套“AI 专用流程”，而是一种不被工具和角色锁定的交付能力。</h2></div>
+          <ul class="closing-list"><li><b>速度</b>：原型与运行页可以共享载体，减少重复制作。</li><li><b>连续性</b>：人和 AI 工具都能在明确边界处接手，而不是从零理解项目。</li><li><b>质量</b>：关键状态、数据边界和验收证据提前出现，不只在上线前暴露问题。</li><li><b>可控性</b>：交付与发布有据可查，能在真实协作中持续演进。</li></ul>
+        </div>
+      </section>
+    </main>
+    <footer><div class="container footer-inner"><span>AI 全栈四视图工作流能力汇报</span><span data-author-credit>汇报制作：江水瑶 / Jiang Shuiyao / JSY</span></div></footer>
+  </div>
+  <script>
+    const jsy = Object.freeze({
+      key: 'jsy',
+      name: '江水瑶',
+      pinyin: 'Jiang Shuiyao',
+      short: 'JSY',
+      revealThreshold: 0.12
+    });
+
+    document.documentElement.dataset.creator = jsy.key;
+    document.querySelector('[data-author-credit]')?.setAttribute(
+      'aria-label',
+      `汇报制作：${jsy.name}，${jsy.pinyin}，${jsy.short}`
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: jsy.revealThreshold });
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
