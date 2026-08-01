@@ -181,6 +181,15 @@
     .closing-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
     .closing-list li { padding: 13px 0; border-top: 1px solid #dedfed; color: #58647a; font-size: 15px; }
     .closing-list b { color: #253145; }
+    .repo-cta { padding: 108px 0; background: #172131; color: #f7f9ff; }
+    .repo-cta .eyebrow { color: #c6b8ff; font-size: 18px; letter-spacing: .06em; }
+    .repo-cta .eyebrow::before { width: 34px; height: 3px; }
+    .repo-cta h2 { max-width: 900px; margin-bottom: 22px; font-size: clamp(42px, 5vw, 66px); line-height: 1.13; }
+    .repo-cta p { max-width: 760px; margin-bottom: 32px; color: #c9d5e8; font-size: 18px; }
+    .repo-cta strong { color: #ffffff; }
+    .repo-link { display: inline-flex; align-items: center; min-height: 60px; padding: 14px 22px; border: 1px solid #d9d1ff; border-radius: var(--radius); background: #f4f2ff; color: #253145; font-size: 18px; font-weight: 800; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+    .repo-link:hover, .repo-link:focus-visible { background: #ffffff; box-shadow: 0 12px 28px rgb(5 9 21 / .3); transform: translateY(-2px); outline: none; }
+    .repo-link:active { transform: translateY(0); }
     footer { padding: 22px 0; background: #073f38; color: #a7d1c3; font-size: 12px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
 
@@ -380,6 +389,15 @@
         <div class="container closing-grid reveal">
           <div><p class="eyebrow">结论</p><h2>我们搭建的不是另一套“AI 专用流程”，而是一种不被工具和角色锁定的交付能力。</h2></div>
           <ul class="closing-list"><li><b>速度</b>：原型与运行页可以共享载体，减少重复制作。</li><li><b>连续性</b>：人和 AI 工具都能在明确边界处接手，而不是从零理解项目。</li><li><b>质量</b>：关键状态、数据边界和验收证据提前出现，不只在上线前暴露问题。</li><li><b>可控性</b>：交付与发布有据可查，能在真实协作中持续演进。</li></ul>
+        </div>
+      </section>
+
+      <section class="repo-cta" aria-labelledby="repo-title">
+        <div class="container reveal">
+          <p class="eyebrow">产品化项目</p>
+          <h2 id="repo-title">四视图同步法，已经做成可运行的产品。</h2>
+          <p>GitHub 仓库 <strong>BUNQNF/traceflow-demo</strong> 完整收录第二期比赛的全部交付内容，将需求、流程、视觉、运行与变更追踪落到可查看、可继续迭代的产品中。</p>
+          <a class="repo-link" href="https://github.com/BUNQNF/traceflow-demo" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub 仓库 BUNQNF traceflow-demo">查看 BUNQNF / traceflow-demo</a>
         </div>
       </section>
     </main>
