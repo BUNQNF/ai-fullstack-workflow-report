@@ -119,6 +119,18 @@
     .pain-no { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; letter-spacing: .04em; }
     .pain-card h3 { margin: 0 0 8px; font-size: 20px; }
     .pain-card p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+    .transition-analysis { margin-top: 44px; padding: 32px; border: 1px solid #c9dad4; border-radius: var(--radius); background: #f1f7f4; }
+    .transition-intro { display: grid; grid-template-columns: .9fr 1.1fr; gap: 38px; align-items: end; margin-bottom: 24px; }
+    .transition-intro h3 { margin: 0; font-size: 25px; }
+    .transition-intro p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+    .transition-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .transition-card { padding: 22px; border: 1px solid #c9dad4; border-radius: 6px; background: var(--surface); }
+    .transition-card small { display: block; margin-bottom: 7px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; font-weight: 800; letter-spacing: .04em; }
+    .transition-card h4 { margin: 0 0 9px; font-size: 18px; line-height: 1.35; }
+    .transition-card p { margin: 0 0 14px; color: var(--ink-soft); font-size: 14px; }
+    .transition-card ul { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+    .transition-card li { position: relative; padding-left: 15px; color: var(--ink); font-size: 13px; }
+    .transition-card li::before { content: ""; position: absolute; top: .7em; left: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
     .pain-conclusion { display: grid; grid-template-columns: 170px 1fr; gap: 25px; margin-top: 32px; padding: 24px 26px; border-left: 3px solid var(--accent); background: var(--mist); }
     .pain-conclusion b { color: var(--accent-deep); font-size: 14px; }
     .pain-conclusion p { margin: 0; color: var(--ink-soft); font-size: 16px; }
@@ -192,8 +204,9 @@
       .carrier-grid { grid-template-columns: 1fr; gap: 12px; }
       .carrier-bridge { grid-template-columns: auto 1fr auto; gap: 10px; }
       .bridge-line { width: auto; height: 1px; }
-      .views, .practice-list, .pain-cards { grid-template-columns: 1fr; }
+      .views, .practice-list, .pain-cards, .transition-grid { grid-template-columns: 1fr; }
       .pain-card:nth-child(odd), .pain-card:nth-child(even) { margin-right: 0; padding-right: 0; padding-left: 0; border-left: 0; }
+      .transition-intro { grid-template-columns: 1fr; gap: 12px; }
       .handoff-row { grid-template-columns: 1fr; gap: 8px; }
       .insight-answer { padding-left: 18px; }
     }
@@ -206,6 +219,7 @@
       .flow-step:nth-child(2)::after { display: none; }
       .pain-card { grid-template-columns: 42px 1fr; gap: 12px; }
       .pain-conclusion { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
+      .transition-analysis { padding: 22px; }
       .system-board { min-height: 0; padding: 16px; }
       .board-facts { gap: 6px; }
       .board-fact { min-height: 66px; padding: 10px; }
@@ -291,7 +305,14 @@
             <article class="pain-card"><span class="pain-no">P-03</span><div><h3>版本不一致，重复返工</h3><p>信息同步、确认和版本管理机制不完善。需求调整后，多角色需要各自修改，容易产生理解偏差、版本不一致和重复返工。</p></div></article>
             <article class="pain-card"><span class="pain-no">P-04</span><div><h3>协作缺少交付闭环</h3><p>跨部门协作缺少明确的角色权限、任务流转、审核确认和交付闭环。问题往往在后续环节才暴露，责任与验收依据也难以回看。</p></div></article>
           </div>
-          <div class="pain-conclusion reveal"><b>问题的本质</b><p>不是任何单一角色效率不足，而是同一项目没有一组能随角色、工具和阶段流转的已确认事实。四视图工作法正是为这个断点建立最小、可交接的共同语言。</p></div>
+          <div class="transition-analysis reveal">
+            <div class="transition-intro"><h3>AI 全栈的第二层断点：很快，但未必天然可交接。</h3><p>AI 全栈不必照搬传统工作流，但真实项目不会只由一个 AI 和一个人完成。它必须既能把阶段性成果交给传统角色，也能在不同 AI 工具之间保留已经确认的项目事实。</p></div>
+            <div class="transition-grid">
+              <article class="transition-card"><small>切换场景 A</small><h4>传统角色会在任意阶段接手</h4><p>UI 可能仍由设计师完成，运营可能提供需求文档，前端工程师也可能接管开发。每一种接手场景需要的交付物都不同。</p><ul><li>给运营：范围、规则、内容归属与验收条件</li><li>给设计：流程、关键状态、内容层级与视觉约束</li><li>给工程：视觉依据、动态边界、数据契约与预览路径</li></ul></article>
+              <article class="transition-card"><small>切换场景 B</small><h4>AI 工具也会在阶段之间更换</h4><p>我们可能在每个阶段离开当前对话，使用更适合任务的新 AI 工具后再回来。仅靠对话上下文，已确认的判断会随着工具切换而断裂。</p><ul><li>新工具无法知道哪些范围已经冻结</li><li>视觉、规则和代码容易在不同对话中发生偏移</li><li>回到原工具时仍需重新复述和校准项目状态</li></ul></article>
+            </div>
+          </div>
+          <div class="pain-conclusion reveal"><b>问题的本质</b><p>我们不需要让 AI 全栈复刻传统流程，而是要让工作成果能在传统角色和不同 AI 工具之间随时切换。四视图工作法以可交接的项目事实为基础，支持传统工作流平滑过渡到 AI 全栈工作流。</p></div>
         </div>
       </section>
 
