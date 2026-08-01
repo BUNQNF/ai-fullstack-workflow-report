@@ -151,49 +151,50 @@
 
     .views-intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 54px; align-items: end; margin-bottom: 44px; }
     .views-intro .lead { margin: 0; }
-    .solution { background: #073e36; color: white; }
-    .solution .eyebrow, .handoff .eyebrow, .practice-section .eyebrow { color: #a5e3d2; }
-    .solution .lead, .handoff .lead, .practice-section .lead { color: #c5dcd5; }
+    .solution, .handoff, .practice-section, .closing { position: relative; overflow: hidden; isolation: isolate; color: #253145; }
+    .solution { background: linear-gradient(115deg, #fff 0%, #f6f8ff 48%, #fff8fa 100%); }
+    .handoff { background: linear-gradient(110deg, #fffdf8 0%, #f6f9ff 52%, #fff 100%); }
+    .practice-section { background: linear-gradient(110deg, #fff 0%, #f9f5ff 50%, #fffdf6 100%); }
+    .closing { background: linear-gradient(120deg, #fff8f6 0%, #f6f8ff 50%, #fff 100%); }
+    .solution .eyebrow, .handoff .eyebrow, .practice-section .eyebrow, .closing .eyebrow { color: #6c5aa6; }
+    .solution .lead, .handoff .lead, .practice-section .lead { color: #647087; }
     .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .view { padding: 29px; border: 1px solid rgb(168 226 211 / .38); border-radius: var(--radius); background: #14574d; }
-    .view:nth-child(2) { background: #124f69; border-color: rgb(146 206 231 / .4); }
-    .view:nth-child(3) { background: #6b4038; border-color: rgb(238 180 160 / .42); }
-    .view:nth-child(4) { background: #45622f; border-color: rgb(203 225 159 / .4); }
+    .view { padding: 29px; border: 1px solid transparent; border-radius: var(--radius); background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(125deg, #a5d8ff, #d9b9ff, #ffd3bd, #f3df93, #a9e5d3) border-box; box-shadow: 0 12px 28px rgb(74 91 139 / .09); }
+    .view:nth-child(2) { background: linear-gradient(#fbfdff, #fbfdff) padding-box, linear-gradient(125deg, #9fd9ff, #c4bcff, #f5bdff, #ffd0b2) border-box; }
+    .view:nth-child(3) { background: linear-gradient(#fffdfb, #fffdfb) padding-box, linear-gradient(125deg, #ffd0b1, #f5c1dc, #d5beff, #a7d8ff) border-box; }
+    .view:nth-child(4) { background: linear-gradient(#fbfffd, #fbfffd) padding-box, linear-gradient(125deg, #a6e6d7, #a7d9ff, #d8c1ff, #ffd4ac) border-box; }
     .view-head { display: flex; justify-content: space-between; gap: 18px; margin-bottom: 20px; }
-    .view-no { color: #bcefe1; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; }
+    .view-no { color: #6b5ba7; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; font-weight: 800; }
     .view h3 { margin: 0; font-size: 25px; }
-    .view-question { margin: 0 0 19px; color: #d8e9e4; font-size: 15px; }
-    .field { padding: 15px 0; border-top: 1px solid rgb(255 255 255 / .2); }
+    .view-question { margin: 0 0 19px; color: #647087; font-size: 15px; }
+    .field { padding: 15px 0; border-top: 1px solid #e8eaf4; }
     .field:last-child { padding-bottom: 0; }
-    .field-label { display: block; margin-bottom: 7px; color: #c0f0e1; font-size: 11px; font-weight: 800; letter-spacing: .06em; }
-    .field p { margin: 0; color: #f4faf8; font-size: 14px; }
+    .field-label { display: block; margin-bottom: 7px; color: #6b5ba7; font-size: 11px; font-weight: 800; letter-spacing: .06em; }
+    .field p { margin: 0; color: #2d3a50; font-size: 14px; }
     .field b { font-weight: 800; }
 
-    .handoff { background: #123b34; color: white; border-top: 1px solid rgb(172 228 214 / .28); }
     .handoff-top { display: grid; grid-template-columns: .83fr 1.17fr; gap: 54px; align-items: end; margin-bottom: 36px; }
     .handoff-top .lead { margin: 0; }
-    .handoff-list { border-top: 1px solid rgb(255 255 255 / .22); }
-    .handoff-row { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 25px; padding: 22px 0; border-bottom: 1px solid rgb(255 255 255 / .18); }
-    .handoff-role { color: #a9e5d4; font-size: 15px; font-weight: 800; }
-    .handoff-row p { margin: 0; color: #d1e1dc; font-size: 14px; }
-    .handoff-row p b { display: block; margin-bottom: 3px; color: white; }
+    .handoff-list { border-top: 1px solid #e2e6f0; }
+    .handoff-row { display: grid; grid-template-columns: 150px 1fr 1fr; gap: 25px; padding: 22px 0; border-bottom: 1px solid #e2e6f0; }
+    .handoff-role { color: #6c5aa6; font-size: 15px; font-weight: 800; }
+    .handoff-row p { margin: 0; color: #647087; font-size: 14px; }
+    .handoff-row p b { display: block; margin-bottom: 3px; color: #253145; }
 
-    .practice-section { background: #213849; color: white; }
-    .practice-section .evidence-quote { color: #d7e4eb; border-left-color: #e6b56b; }
+    .practice-section .evidence-quote { color: #647087; border-left-color: #d29ade; }
     .evidence-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(38px, 8vw, 110px); align-items: start; }
     .evidence-quote { padding: 24px 0 0 26px; border-left: 3px solid var(--accent); color: var(--ink-soft); font-size: 18px; line-height: 1.7; }
     .practice-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 30px; }
-    .practice { padding: 22px 0; border-top: 1px solid rgb(255 255 255 / .2); }
+    .practice { padding: 22px 0; border-top: 1px solid #e4e6f0; }
     .practice b { display: block; margin-bottom: 5px; font-size: 16px; }
-    .practice p { margin: 0; color: #d1e1e7; font-size: 14px; }
+    .practice p { margin: 0; color: #647087; font-size: 14px; }
 
-    .closing { padding: 82px 0; background: #6b4038; color: white; }
+    .closing { padding: 82px 0; }
     .closing-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: end; }
-    .closing .eyebrow { color: #b7e8d9; }
     .closing h2 { max-width: 720px; margin-bottom: 0; font-size: clamp(32px, 4vw, 54px); }
     .closing-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
-    .closing-list li { padding: 13px 0; border-top: 1px solid rgb(202 239 227 / .36); color: #e0f4ec; font-size: 15px; }
-    .closing-list b { color: white; }
+    .closing-list li { padding: 13px 0; border-top: 1px solid #dedfed; color: #58647a; font-size: 15px; }
+    .closing-list b { color: #253145; }
     footer { padding: 22px 0; background: #073f38; color: #a7d1c3; font-size: 12px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
 
