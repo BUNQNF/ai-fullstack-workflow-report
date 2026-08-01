@@ -144,12 +144,13 @@
     .handoff { background: linear-gradient(110deg, #fffdf8 0%, #f6f9ff 52%, #fff 100%); }
     .practice-section { background: linear-gradient(110deg, #fff 0%, #f9f5ff 50%, #fffdf6 100%); }
     .closing { background: linear-gradient(120deg, #fff8f6 0%, #f6f8ff 50%, #fff 100%); }
-    .solution .eyebrow { color: #c6b8ff; }
+    .solution .eyebrow { color: #c6b8ff; font-size: 18px; letter-spacing: .06em; }
+    .solution .eyebrow::before { width: 34px; height: 3px; }
     .solution .lead { color: #c9d5e8; }
     .handoff .eyebrow, .practice-section .eyebrow, .closing .eyebrow { color: #6c5aa6; }
     .handoff .lead, .practice-section .lead { color: #647087; }
     .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .view { padding: 24px; border: 1px solid transparent; border-radius: var(--radius); background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(125deg, #a5d8ff, #d9b9ff, #ffd3bd, #f3df93, #a9e5d3) border-box; box-shadow: 0 12px 28px rgb(74 91 139 / .09); }
+    .view { padding: 24px; border: 1px solid transparent; border-radius: var(--radius); background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(125deg, #a5d8ff, #d9b9ff, #ffd3bd, #f3df93, #a9e5d3) border-box; box-shadow: 0 12px 28px rgb(74 91 139 / .09); color: #253145; }
     .view:nth-child(2) { background: linear-gradient(#fbfdff, #fbfdff) padding-box, linear-gradient(125deg, #9fd9ff, #c4bcff, #f5bdff, #ffd0b2) border-box; }
     .view:nth-child(3) { background: linear-gradient(#fffdfb, #fffdfb) padding-box, linear-gradient(125deg, #ffd0b1, #f5c1dc, #d5beff, #a7d8ff) border-box; }
     .view:nth-child(4) { background: linear-gradient(#fbfffd, #fbfffd) padding-box, linear-gradient(125deg, #a6e6d7, #a7d9ff, #d8c1ff, #ffd4ac) border-box; }
