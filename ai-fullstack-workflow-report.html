@@ -191,9 +191,9 @@
     .repo-link { display: inline-flex; align-items: center; min-height: 60px; padding: 14px 22px; border: 1px solid #d9d1ff; border-radius: var(--radius); background: #f4f2ff; color: #253145; font-size: 18px; font-weight: 800; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; animation: repo-breathe 2.2s ease-in-out infinite; }
     .repo-link:hover, .repo-link:focus-visible { animation: none; background: #ffffff; box-shadow: 0 12px 28px rgb(5 9 21 / .3); transform: translateY(-2px); outline: none; }
     .repo-link:active { transform: translateY(0); }
-    .repo-click-cue { position: absolute; top: -24px; right: -22px; z-index: 1; pointer-events: none; font-size: 27px; line-height: 1; filter: drop-shadow(0 3px 4px rgb(5 9 21 / .22)); animation: repo-click 1.25s ease-in-out infinite; }
+    .repo-click-cue { position: absolute; top: -8px; right: 8px; z-index: 1; pointer-events: none; font-size: 27px; line-height: 1; filter: drop-shadow(0 3px 4px rgb(5 9 21 / .22)); animation: repo-click 1.25s ease-in-out infinite; }
     @keyframes repo-breathe { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgb(202 186 255 / 0); } 50% { transform: scale(1.025); box-shadow: 0 0 0 10px rgb(202 186 255 / .14); } }
-    @keyframes repo-click { 0%, 100% { transform: translateY(-3px) rotate(-12deg); } 50% { transform: translateY(5px) rotate(-3deg) scale(.93); } }
+    @keyframes repo-click { 0%, 100% { transform: translateY(-2px) rotate(-4deg); } 50% { transform: translateY(4px) rotate(0) scale(.93); } }
     footer { padding: 22px 0; background: #073f38; color: #a7d1c3; font-size: 12px; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
 
@@ -231,7 +231,7 @@
       .board-foot { display: block; font-size: 11px; }
       .board-foot strong { display: block; margin-top: 3px; }
       .view, .carrier-panel { padding: 22px; }
-      .repo-click-cue { right: 0; }
+      .repo-click-cue { right: 8px; }
       .footer-inner { display: block; }
       .footer-inner span { display: block; margin-top: 5px; }
     }
