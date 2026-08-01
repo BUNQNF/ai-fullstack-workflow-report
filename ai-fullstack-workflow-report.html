@@ -72,25 +72,25 @@
     .hero-note { display: flex; align-items: flex-start; gap: 12px; max-width: 520px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 14px; }
     .hero-note b { flex: 0 0 auto; color: var(--accent-deep); }
 
-    .system-board { position: relative; min-height: 480px; padding: 28px; border: 1px solid #bad1c9; border-radius: var(--radius); background: #eaf3ef; box-shadow: 0 18px 45px rgb(23 74 62 / .11); }
-    .board-caption { display: flex; justify-content: space-between; margin-bottom: 28px; color: var(--ink-soft); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    .system-board { padding: 28px; border: 1px solid #bad1c9; border-radius: var(--radius); background: #eaf3ef; box-shadow: 0 18px 45px rgb(23 74 62 / .11); }
+    .board-caption { display: flex; justify-content: space-between; margin-bottom: 17px; color: var(--ink-soft); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
     .board-caption b { color: var(--accent-deep); }
-    .switch-lane { position: absolute; top: 89px; bottom: 45px; left: 50%; width: 2px; background: #a5c7bb; }
-    .switch-lane::after { content: ""; position: absolute; left: -5px; bottom: -1px; width: 10px; height: 10px; border-right: 2px solid #7ea798; border-bottom: 2px solid #7ea798; transform: rotate(45deg); }
-    .board-side { position: relative; display: grid; gap: 13px; width: calc(50% - 20px); }
-    .board-side.right { margin-left: auto; margin-top: -172px; }
-    .board-title { margin: 0 0 10px; color: var(--ink-soft); font-size: 12px; font-weight: 800; letter-spacing: .06em; }
-    .token { position: relative; padding: 15px 15px 14px; border: 1px solid #c7ddd5; border-radius: 6px; background: rgb(255 255 255 / .92); }
-    .token::after { content: ""; position: absolute; top: 50%; width: 20px; border-top: 1px dashed #7ea798; }
-    .left .token::after { right: -21px; }
-    .right .token::after { left: -21px; }
-    .token small { display: block; margin-bottom: 3px; color: var(--accent-deep); font-size: 11px; font-weight: 800; letter-spacing: .06em; }
-    .token b { display: block; font-size: 15px; }
-    .token span { display: block; margin-top: 2px; color: var(--ink-soft); font-size: 12px; }
-    .board-core { position: absolute; z-index: 1; right: calc(50% - 62px); top: 216px; display: grid; place-items: center; width: 124px; aspect-ratio: 1; border: 7px solid #d7eee6; border-radius: 50%; background: var(--accent-deep); color: white; text-align: center; box-shadow: 0 0 0 1px #74a99a; }
-    .board-core b { display: block; font-size: 15px; }
-    .board-core span { display: block; margin-top: 2px; font-size: 11px; opacity: .78; }
-    .board-foot { position: absolute; right: 28px; bottom: 21px; left: 28px; display: flex; justify-content: space-between; padding-top: 15px; border-top: 1px solid #c7ddd5; color: var(--ink-soft); font-size: 12px; }
+    .board-message { margin-bottom: 18px; padding: 14px 16px; border-left: 3px solid var(--accent); background: rgb(255 255 255 / .58); }
+    .board-message b { display: block; margin-bottom: 3px; color: var(--ink); font-size: 16px; }
+    .board-message span { color: var(--ink-soft); font-size: 13px; }
+    .board-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px; }
+    .board-fact { min-height: 74px; padding: 12px; border: 1px solid #c7ddd5; border-radius: 6px; background: rgb(255 255 255 / .92); }
+    .board-fact small { display: block; margin-bottom: 5px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 800; }
+    .board-fact b { display: block; font-size: 13px; line-height: 1.35; }
+    .board-lanes { display: grid; gap: 10px; }
+    .board-lane { display: grid; grid-template-columns: 132px 1fr; gap: 12px; align-items: stretch; padding: 13px; border-top: 1px solid #c7ddd5; background: rgb(255 255 255 / .38); }
+    .lane-heading small { display: block; margin-bottom: 3px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; font-weight: 800; }
+    .lane-heading b { display: block; font-size: 14px; }
+    .lane-heading span { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 11px; line-height: 1.4; }
+    .lane-stages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .lane-stage { position: relative; display: grid; align-content: center; min-height: 48px; padding: 8px 10px; border: 1px solid #c7ddd5; border-radius: 5px; background: white; color: var(--ink); font-size: 12px; font-weight: 750; line-height: 1.35; }
+    .lane-stage:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -9px; z-index: 1; width: 8px; border-top: 1px solid #84ab9d; }
+    .board-foot { display: flex; justify-content: space-between; gap: 16px; margin-top: 17px; padding-top: 14px; border-top: 1px solid #c7ddd5; color: var(--ink-soft); font-size: 12px; }
     .board-foot strong { color: var(--accent-deep); }
 
     .insight-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
@@ -187,7 +187,8 @@
       .hero-grid, .pain-intro, .views-intro, .handoff-top, .evidence-grid, .closing-grid, .insight-grid { grid-template-columns: 1fr; gap: 28px; }
       .hero-copy { font-size: 16px; }
       .system-board { min-height: 448px; padding: 20px; }
-      .board-foot { right: 20px; left: 20px; }
+      .board-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .board-lane { grid-template-columns: 1fr; }
       .carrier-grid { grid-template-columns: 1fr; gap: 12px; }
       .carrier-bridge { grid-template-columns: auto 1fr auto; gap: 10px; }
       .bridge-line { width: auto; height: 1px; }
@@ -205,14 +206,13 @@
       .flow-step:nth-child(2)::after { display: none; }
       .pain-card { grid-template-columns: 42px 1fr; gap: 12px; }
       .pain-conclusion { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
-      .system-board { min-height: 470px; padding: 16px; }
-      .board-side { width: calc(50% - 13px); }
-      .board-side.right { margin-top: -178px; }
-      .token { padding: 12px 9px; }
-      .token b { font-size: 13px; }
-      .token span { font-size: 11px; }
-      .board-core { right: calc(50% - 51px); top: 218px; width: 102px; border-width: 5px; }
-      .board-foot { font-size: 10px; }
+      .system-board { min-height: 0; padding: 16px; }
+      .board-facts { gap: 6px; }
+      .board-fact { min-height: 66px; padding: 10px; }
+      .lane-stages { grid-template-columns: 1fr; }
+      .lane-stage:not(:last-child)::after { top: auto; right: auto; bottom: -5px; left: 50%; width: 1px; height: 5px; border-top: 0; border-left: 1px solid #84ab9d; }
+      .board-foot { display: block; font-size: 11px; }
+      .board-foot strong { display: block; margin-top: 3px; }
       .view, .carrier-panel { padding: 22px; }
       .footer-inner { display: block; }
       .footer-inner span { display: block; margin-top: 5px; }
@@ -248,23 +248,20 @@
             <p class="hero-copy">当需求来自运营，UI 交给设计师，开发转由工程师完成，或我们更换一个 AI 工具，项目都不应回到“重新解释一遍”的起点。</p>
             <div class="hero-note"><b>核心主张</b><span>用四类可交接的产出，保留 AI 的生成速度，同时让传统角色和新的 AI 工具都能立即进入工作。</span></div>
           </div>
-          <div class="system-board reveal" aria-label="AI 工作流与传统工作流的双向协作示意">
-            <div class="board-caption"><span>PROJECT CONTINUITY MAP</span><b>双向切换</b></div>
-            <div class="switch-lane" aria-hidden="true"></div>
-            <div class="board-side left">
-              <p class="board-title">传统协作输入</p>
-              <div class="token"><small>运营 / 产品</small><b>目标、内容与规则</b><span>业务边界和验收要求</span></div>
-              <div class="token"><small>设计</small><b>关键状态与视觉资产</b><span>组件、素材与响应式规则</span></div>
-              <div class="token"><small>工程 / QA</small><b>数据契约与验证证据</b><span>接口、预览路径与发布记录</span></div>
+          <div class="system-board reveal" aria-label="传统团队和 AI 工具围绕同一组项目事实协作的示意">
+            <div class="board-caption"><span>PROJECT CONTINUITY MAP</span><b>同一事实，多种接手方式</b></div>
+            <div class="board-message"><b>项目不需要绑定某一个人或某一个 AI 工具。</b><span>只要交付物完整，传统角色与不同 AI 工具都能在对应阶段继续推进。</span></div>
+            <div class="board-facts" aria-label="四视图共有的项目事实">
+              <div class="board-fact"><small>01</small><b>需求与规则</b></div>
+              <div class="board-fact"><small>02</small><b>流程与状态</b></div>
+              <div class="board-fact"><small>03</small><b>视觉与资产</b></div>
+              <div class="board-fact"><small>04</small><b>运行与验证</b></div>
             </div>
-            <div class="board-core"><div><b>四视图</b><span>最小交接集合</span></div></div>
-            <div class="board-side right">
-              <p class="board-title">AI 连续推进</p>
-              <div class="token"><small>AI 工具 A</small><b>梳理需求与流程</b><span>不依赖完整聊天记录</span></div>
-              <div class="token"><small>AI 工具 B</small><b>生成视觉与静态页面</b><span>按已确认状态制作</span></div>
-              <div class="token"><small>AI 工具 C</small><b>实现行为与交付验证</b><span>基于契约继续开发</span></div>
+            <div class="board-lanes">
+              <div class="board-lane"><div class="lane-heading"><small>执行路径 A</small><b>传统团队接手</b><span>按职责分工继续完成</span></div><div class="lane-stages"><span class="lane-stage">运营 / 产品确认规则</span><span class="lane-stage">设计完成关键状态</span><span class="lane-stage">工程 / QA 实现并验收</span></div></div>
+              <div class="board-lane"><div class="lane-heading"><small>执行路径 B</small><b>AI 工具连续推进</b><span>按已确认事实继续工作</span></div><div class="lane-stages"><span class="lane-stage">工具 A 梳理需求与流程</span><span class="lane-stage">工具 B 制作视觉与页面</span><span class="lane-stage">工具 C 实现行为与验证</span></div></div>
             </div>
-            <div class="board-foot"><span>切换的是执行者，不是项目事实</span><strong>交接不重做</strong></div>
+            <div class="board-foot"><span>两条路径可以随时切换，因为它们读取的是同一组已确认交付物。</span><strong>切换执行者，不重做项目</strong></div>
           </div>
         </div>
       </section>
